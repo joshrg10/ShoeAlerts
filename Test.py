@@ -111,8 +111,8 @@ def findNewResults(search_name, link):
         number_of_new_results = len(comparison_result)
         print(str(number_of_new_results) + " new results")
         print(comparison_result)
-        write_changes_confirmation = input("Write new results  to disk? (Y/N) ")
-        if write_changes_confirmation == "Y": # Todo remove input line once fully automated
+        write_changes_confirmation = "Y"
+        if write_changes_confirmation == "Y":
             writeNewResultsToCsv(filename=search_name)
 
 # Create Dictionary of search name and link
