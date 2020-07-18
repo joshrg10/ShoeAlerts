@@ -20,8 +20,8 @@ def findNewResults(search_name, link):
     def getNumberOfResults(html):
         number_of_results_section = html.findAll("h1", {"class": "srp-controls__count-heading"})
         split = 'class="BOLD">'
-        number_of_results = int(str(number_of_results_section).split(split)[1].split("<")[0].replace(",",
-                                                                                                     ""))  # Get number of search results
+        print("23: " + str(number_of_results_section))
+        number_of_results = int(str(number_of_results_section).split(split)[1].split("<")[0].replace(",", ""))  # Get number of search results
         return number_of_results
 
     def getResults(number_of_search_results, html):
