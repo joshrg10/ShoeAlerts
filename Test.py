@@ -20,7 +20,6 @@ def findNewResults(search_name, link):
     def getNumberOfResults(html):
         number_of_results_section = html.findAll("h1", {"class": "srp-controls__count-heading"})
         split = 'class="BOLD">'
-        print("23: " + str(number_of_results_section))
         number_of_results = int(str(number_of_results_section).split(split)[1].split("<")[0].replace(",", ""))  # Get number of search results
         return number_of_results
 
@@ -87,8 +86,10 @@ def findNewResults(search_name, link):
         message_list = ""
         for x, i in enumerate(new_results_for_email):
             message_list = message_list + "\n" + str(x + 1) + ". " + str(i)
-        message = '''\\
-        You have ''' + str(len(new_results_for_email)) + " new results: " + message_list
+
+        subject = "New " + search_name + " Results"
+        text = " You have " + str(len(new_results_for_email)) + " new result(s): " + message_list
+        message = 'Subject: {}\n\n{}'.format(subject, text)
 
         # Send Email
         with smtplib.SMTP('smtp.gmail.com:587') as s:
